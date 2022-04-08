@@ -9,9 +9,9 @@ namespace ArraySort
     internal class Program
     {
 
-        static int[] GetArrayFromConsole()
+        static int[] GetArrayFromConsole(int num = 4)
         {
-            var result = new int[5];
+            var result = new int[num];
             
             for (int i = 0; i < result.Length; i++)
             {
@@ -46,12 +46,28 @@ namespace ArraySort
             }
             return result;
         }
+        static void ShowArray(int[] array, bool IsSort = false)
+        {
+            var temp = array;
+            if (IsSort == true)
+            {
+                temp = SortArray(array);
+            }
+            foreach(var item in temp)
+            {
+                Console.Write(item + " ");
+            }
+        }
         
 
         public static void Main(string[] args)
-        {            
-            var arrayFromConsole = GetArrayFromConsole();
-            SortArray(arrayFromConsole);
+        {
+            
+            var array = GetArrayFromConsole(5);
+            //var sortedArray = SortArray(array);
+
+            ShowArray(array, false);
+            
 
             Console.ReadKey();
         }
